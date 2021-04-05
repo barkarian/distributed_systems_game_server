@@ -25,7 +25,7 @@ router.post("/create-tournament", authorizationOfficial, async (req, res) => {
   try {
     //1.check if players are enough
     const { tourn_users, tournament_name, tournament_type } = req.body;
-    console.log(req.verifiedInfos.user_id);
+    //console.log(req.verifiedInfos.user_id);
     if (tourn_users.length <= 4) {
       res.status(400).json("You need more users for creating a tournament");
     }

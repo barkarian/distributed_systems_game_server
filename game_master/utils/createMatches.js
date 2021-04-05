@@ -19,20 +19,19 @@ const createMatches = async (tournament_id, typeOfMatch) => {
       runningMatches[i].game_type = typeOfMatch;
       runningMatches[i].in_tournament = true;
     }
-    console.log({
-      msg: "getImportedMatches",
-      runningMatches: runningMatches
-    });
+    // console.log({
+    //   msg: "getImportedMatches",
+    //   runningMatches: runningMatches
+    // });
     const mongoReq = await Match.insertMany(runningMatches);
-    console.log({
-      msg: "mongoReq",
-      runningMatches: mongoReq
-    });
+    // console.log({
+    //   msg: "mongoReq",
+    //   runningMatches: mongoReq
+    // });
     //CREATE games SQL
     const finalSQLQuery = await initialize_games(mongoReq);
     const dbRequest = await pool.query(finalSQLQuery);
-    //console.log(dbRequest);
-
+    console.log("Tournament created and 1st phase matches are available");
     //RELATE GAMES WITH MATCHES
     //awaiting for match
   } catch (err) {
