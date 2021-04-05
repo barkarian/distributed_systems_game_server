@@ -14,7 +14,7 @@ module.exports = async (req, res, next) => {
       return res.status(403).json("Not Authorize");
     }
     req.verifiedInfos = payload;
-    //console.log(req);
+    console.log(req.verifiedInfos);
     next();
   } catch (err) {
     console.error(err.message);

@@ -15,8 +15,8 @@ const create_tuple = /*async*/ (passingObj) => {
   const tournament_game_id = uuidv4();
   //create games
   if (phase == 1) {
-    game_id = "ID after awaiting for game creation"; //add await here
-    game_id = null; //maybe add await later
+    game_id = uuidv4();
+    //game_id = null; //maybe add await later
   } else {
     game_id = null;
   }
@@ -136,7 +136,7 @@ const startTournament = async (gameBacket, phases, tournament_id) => {
         const winners = await pool.query(
           `INSERT INTO tournament_winners(tournament_id,winner_id) VALUES ('${tournament_id}','${x.user_id}') RETURNING *`
         );
-        console.log({ msg: "winner found uuid:" }, x.user_id);
+        //console.log({ msg: "winner found uuid:" }, x.user_id);
         //update winner directly on TABLE:tournaments
       } else {
         const setEndgame = await pool.query(
@@ -151,4 +151,29 @@ const startTournament = async (gameBacket, phases, tournament_id) => {
   }
 };
 
-module.exports = { startTournament };
+const initialize_games = async (games) => {
+  try {
+    var waitingForBacket = [];
+    var endgames = [];
+    var finalSQLquery =
+      "INSERT INTO games(match_id,player1,player2,game_type,in_tournament,game_id) VALUES";
+    while (games.length > 0) {
+      let x = games.pop();
+      let subQuery = `('${x._id}','${x.player1}','${x.player2}','${
+        x.game_type
+      }','${x.in_tournament == true ? 1 : 0}','${x.game_id}')`;
+      if (games.length == 0) {
+        subQuery = subQuery + ";";
+      } else {
+        subQuery = subQuery + ",";
+      }
+      finalSQLquery = finalSQLquery + subQuery;
+    }
+    return finalSQLquery;
+  } catch (error) {
+    //console.log({ msg: "endgames are also:", endgames });
+    console.log(error.message);
+  }
+};
+
+module.exports = { startTournament, initialize_games };

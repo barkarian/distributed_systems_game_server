@@ -39,7 +39,9 @@ CREATE TABLE tournaments(
     tournament_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
     tournament_name VARCHAR(255) NOT NULL,
     finished BIT DEFAULT '0',
-    total_players int
+    total_players int,
+    tournament_creator uuid NOT NULL,
+    game_type VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE tournament_winners(
@@ -47,6 +49,21 @@ CREATE TABLE tournament_winners(
     winner_id uuid NOT NULL,
     PRIMARY KEY(tournament_id,winner_id)
 );
+CREATE TABLE games(
+    match_id VARCHAR(255) NOT NULL,--relative to mongodb
+    player1 uuid NOT NULL,
+    player2 uuid NOT NULL,
+    game_type VARCHAR(255) NOT NULL,
+    finished BIT DEFAULT '0',
+    in_tournament BIT DEFAULT '1',
+    winner_id uuid DEFAULT NULL, --only this default value
+    game_id uuid PRIMARY KEY NOT NULL
+);
+INSERT INTO games(match_id,player1,player2,game_type,in_tournament,game_id) 
+            VALUES ('a string id','324d9a15-4d93-4456-837d-e5e227cc413f','f99fb395-0c07-4db2-8e9e-f42f00b30afc','chess','0','fc5d8faa-33a8-41bd-b262-06b97c621458');
 
-INSERT INTO tournaments(tournament_name,total_players) VALUES ('awesome tournament name',15);
+--INSERT INTO tournaments(match_id,total_players) VALUES ('awesome tournament name',15);
 
+--TESTING PURPOSES
+delete from tournaments;delete from tournament_games;delete from tournament_winners;delete from games;
+select * from tournaments;select * from tournament_games;select * from tournament_winners;select * from games;

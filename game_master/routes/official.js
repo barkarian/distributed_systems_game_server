@@ -2,6 +2,7 @@ const router = require("express").Router();
 const authorizationOfficial = require("../middleware/authorizationOfficial");
 const pool = require("../db");
 const { startTournament } = require("../utils/createTuples");
+const { createMatches } = require("../utils/createMatches");
 const e = require("express");
 //const { tournamentMatchesRelation } = require("../utils/createTuples");
 
@@ -23,9 +24,10 @@ router.get("/get-all-players", authorizationOfficial, async (req, res) => {
 router.post("/create-tournament", authorizationOfficial, async (req, res) => {
   try {
     //1.check if players are enough
-    const { tourn_users, tournament_name } = req.body;
+    const { tourn_users, tournament_name, tournament_type } = req.body;
+    console.log(req.verifiedInfos.user_id);
     if (tourn_users.length <= 4) {
-      res.status(500).json("You need more users for creating a tournament");
+      res.status(400).json("You need more users for creating a tournament");
     }
     //2.creating the gameBacket
     var gameBacket = tourn_users;
@@ -33,8 +35,12 @@ router.post("/create-tournament", authorizationOfficial, async (req, res) => {
     var phases = Math.log2(gameBacket.length);
     phases = Math.floor(phases) - 1;
     //4.create tournament tuple
+
+    //TODO
+    //add the value game_type
+    //change the table
     const tournament = await pool.query(
-      `INSERT INTO tournaments(tournament_name,total_players) VALUES ('${tournament_name}',${gameBacket.length}) RETURNING *`
+      `INSERT INTO tournaments(tournament_name,total_players,tournament_creator,game_type) VALUES ('${tournament_name}',${gameBacket.length},'${req.verifiedInfos.user_id}','${tournament_type}') RETURNING *`
     );
     if (tournament.rows.length == 0) {
       throw "Something went wrong tournament hasn't created";
@@ -46,10 +52,13 @@ router.post("/create-tournament", authorizationOfficial, async (req, res) => {
       tournament.rows[0].tournament_id
     );
     if (success) {
+      //!!!!!create matces is a very important function located in the utils folder!!!!
+      createMatches(tournament.rows[0].tournament_id, tournament_type);
       res.json(tournament.rows[0].tournament_id);
     } else {
       res.status(500).json("Couldn't start tournament");
     }
+    //start the running games
   } catch (err) {
     console.error(err.message);
     res.status(500).json("Server Error");
