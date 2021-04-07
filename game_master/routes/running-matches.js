@@ -1,5 +1,6 @@
 const authorization = require("../middleware/authorization");
 const pool = require("../db");
+const jwtGenerator = require("../utils/jwtGenerator.js");
 const router = require("express").Router();
 
 router.get("/", authorization, async (req, res) => {
@@ -20,8 +21,13 @@ router.get("/", authorization, async (req, res) => {
     );
     const allIndividualMatches = dbRes.rows;
     //2.Sign another JWT token so that every other service would know what matches he can play
-
-    res.json(allIndividualMatches);
+    const obj = { user_data: req.verifiedInfos, allIndividualMatches };
+    req.verifiedInfos.matches = allIndividualMatches;
+    //console.log(req.verifiedInfos);
+    const token = jwtGenerator({
+      user_data: req.verifiedInfos
+    });
+    res.json({ token, allIndividualMatches });
   } catch (error) {
     console.error(error.message);
     res.status(500).json("Server Error");
