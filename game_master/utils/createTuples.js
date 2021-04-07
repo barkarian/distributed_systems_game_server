@@ -159,6 +159,7 @@ const initialize_games = async (games) => {
       "INSERT INTO games(match_id,player1,player2,game_type,in_tournament,game_id) VALUES";
     while (games.length > 0) {
       let x = games.pop();
+      //console.log({ msg: "x is:", x });
       let subQuery = `('${x._id}','${x.player1}','${x.player2}','${
         x.game_type
       }','${x.in_tournament == true ? 1 : 0}','${x.game_id}')`;

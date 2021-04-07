@@ -37,6 +37,7 @@ const createMatches = async (tournament_id, typeOfMatch) => {
   } catch (err) {
     console.error(err.message);
     //res.status(500).json("Server Error");
+    //TODO UP LINE
   }
 };
 

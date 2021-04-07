@@ -12,6 +12,9 @@ connectToMongo();
 
 //routes
 app.use("/official", require("./routes/official.js"));
+app.use("/player/new-game", require("./routes/new-game.js"));
+app.use("/player", require("./routes/player.js"));
+app.use("/player/running-matches", require("./routes/running-matches.js"));
 
 app.listen(5001, () => {
   console.log("server is running on port 5001");
