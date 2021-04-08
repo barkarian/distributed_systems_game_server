@@ -5,6 +5,7 @@ const { start_normal_game } = require("../utils/create_game");
 
 router.post("/", authorization, async (req, res) => {
   try {
+    // console.log(req.body.game_type);
     //1.check if player has already request a game
     const client = await pool.query(
       `SELECT player FROM waiting_for_matches WHERE game_type='${req.body.game_type}' AND player='${req.verifiedInfos.user_id}'  `

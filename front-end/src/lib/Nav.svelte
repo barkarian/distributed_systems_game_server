@@ -4,12 +4,13 @@
 </script>
 
 <nav class="topnav">
-    <a href="/" class="active">Home</a>
-    <a href="/about">About</a>
     {#if ! $isAuthenticated }
         <a href="/register">Register</a>
         <a href="/login">Logging in</a>
     {:else}
+        <a href="/my-matches">My Matches</a>
+        <a href="/search-matches">Search Matches</a>
+        <a href="/new-game">New game</a>
         <a href="/profile"><bold>👽{$user.user_email}</bold></a>
     {/if}
     <p>User is logged: {$isAuthenticated}</p>

@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
     const payload = jwt.verify(jwtToken, process.env.jwtSecret);
     //console.log(payload);
     req.verifiedInfos = payload;
-
+    //console.log(req.body);
     // console.log("Middleware changes request to:"); //debugging
     // console.log(req);
     next();

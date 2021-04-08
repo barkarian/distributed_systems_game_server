@@ -28,12 +28,9 @@ router.get("/get-my-matches", authorization, async (req, res) => {
 router.get("/get-tournaments-matches", authorization, async (req, res) => {
   try {
     const { user_id, user_email } = req.verifiedInfos;
-    console.log(
-      `select game_id,player1,player2,winner_id,user_email from games inner join users on users.user_id=player1 or users.user_id=player2 where (player1='${user_id}' OR player2='${user_id}') AND users.user_email!='${user_email}'`
-    );
     //1.request to the database
     const dbRes = await pool.query(
-      `select  ga.game_id,us1.user_email as user1,us2.user_email as user2,win.user_email as winner_email , tourn.tournament_id,tourn.tournament_name,tga.phases,tga.phase,tga.phase_id,tourn.finished as tournament_finished
+      `select  ga.game_id,us1.user_email as player1_email,us2.user_email as player2_email,win.user_email as winner_email , tourn.tournament_id,tourn.tournament_name,tga.phases,tga.phase,tga.phase_id,tourn.finished as tournament_finished,ga.in_tournament,tga.endgame
       from "tournament_games" tga 
       inner join "games" ga on tga.game_id=ga.game_id
       inner join "users" us1 on ga.player1=us1.user_id

@@ -106,12 +106,13 @@ router.get("/admin/get-all-users", authorization, async (req, res) => {
     }
     //all users except admin
     const allUsers = await pool.query(
-      "SELECT user_id,user_email,user_name FROM users WHERE user_role_admin!='1'"
+      "SELECT user_id,user_email,user_name,user_role_admin,user_role_official FROM users WHERE user_role_admin!='1' OR user_role_official!='1'"
     );
 
     if (allUsers.rows.length === 0) {
       return res.json("There's no users (all users except admins)");
     }
+    console.log(allUsers.rows);
     res.json(allUsers.rows);
   } catch (err) {
     console.error(err.message);
