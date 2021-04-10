@@ -1,7 +1,9 @@
 <script>
 import {onMount} from "svelte";
-import {isAuthenticated,user as userState} from '../stores/store.js';
+import {curGame} from '../stores/store.js';
+import {goto} from "$app/navigation"
 let runningGames=[]
+let selectedMatch=""
 const searchForRunningGames = async ()=>{
         try {
             //const user_data=
@@ -17,12 +19,18 @@ const searchForRunningGames = async ()=>{
             }
             localStorage.setItem("token",parseRes.token);
             runningGames=parseRes.allIndividualMatches
-            console.log(runningGames)
+            //console.log(runningGames)
             
         }catch(err){
             console.log(err)
         }
     }
+$: if(selectedMatch!=""){
+    //console.log("heyy")
+    $curGame=selectedMatch;
+    //console.log(curGame)
+    goto("/game")
+}
 onMount(async()=>searchForRunningGames())
 </script>
 
@@ -31,5 +39,7 @@ onMount(async()=>searchForRunningGames())
     {#each runningGames as game (game.match_id)}
         <li current={game.match_id}>id:{game.match_id} player1:{game.player1_email} VS player2:{game.player2_email} 
         phases:{game.phases},phase:{game.phase},phase_id:{game.phases},endgame:{game.endgame}</li>
+        <input type=radio bind:group={selectedMatch} value={game.match_id}>
     {/each}
 </ul>
+<p>{selectedMatch}</p>

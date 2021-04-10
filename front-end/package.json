@@ -19,5 +19,8 @@
 	"type": "module",
 	"engines": {
 		"node": ">= 12.17.0"
+	},
+	"dependencies": {
+		"socket.io-client": "^4.0.1"
 	}
 }

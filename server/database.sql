@@ -70,7 +70,9 @@ INSERT INTO games(match_id,player1,player2,game_type,in_tournament,game_id)
             VALUES ('a string id','324d9a15-4d93-4456-837d-e5e227cc413f','f99fb395-0c07-4db2-8e9e-f42f00b30afc','chess','0','fc5d8faa-33a8-41bd-b262-06b97c621458');
 
 --INSERT INTO tournaments(match_id,total_players) VALUES ('awesome tournament name',15);
+UPDATE users SET user_role_official='0' ,user_role_admin='0' WHERE user_email!='admin@gmail.com';
+
 
 --TESTING PURPOSES
 delete from tournaments;delete from tournament_games;delete from tournament_winners;delete from games;delete from waiting_for_matches;
-select * from tournaments;select * from tournament_games;select * from tournament_winners;select * from games;select * from waiting_for_matches;
+ 
