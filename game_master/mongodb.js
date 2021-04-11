@@ -15,6 +15,14 @@ const matchSchema = new Schema(
       type: String,
       required: true
     },
+    player1_email: {
+      type: String,
+      default: ""
+    },
+    player2_email: {
+      type: String,
+      default: ""
+    },
     game_type: {
       type: String,
       required: true
@@ -22,7 +30,18 @@ const matchSchema = new Schema(
     in_tournament: {
       type: Boolean,
       required: true
-    }
+    },
+    cur_player: {
+      type: String,
+      required: false,
+      default: ""
+    },
+    moves: [
+      {
+        player: String,
+        move: String
+      }
+    ]
   },
   {
     timestamps: true
