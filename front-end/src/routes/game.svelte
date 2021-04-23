@@ -7,6 +7,7 @@ import Chessboard from "../utils/chess/chessboard.svelte"
 let myturn=true;
 let opponent;
 let playingFirst;//Boolean
+let game_type;
 //REQUESTS
 const getMatch = async ()=>{
         try {
@@ -22,6 +23,8 @@ const getMatch = async ()=>{
             if(typeof(parseRes)==="string"){
                 throw parseRes 
             }
+            //console.log(parseRes.game_type)
+            game_type=parseRes.game_type;
             //get match details
             playingFirst=$user.user_email==parseRes.player1_email;
             $user.user_email==parseRes.player1_email?opponent=parseRes.player2_email:opponent=parseRes.player1_email;
@@ -114,8 +117,10 @@ $:if($moveDetails!=''){
 
 <h1>match_id is:{$curGame}</h1>
 {#if myturn==true}
-<h1>You're turn</h1>
+<h3>You're turn</h3>
 {:else}
-<h1>{opponent}'s turn</h1>
+<h3>{opponent}'s turn</h3>
 {/if}
+{#if game_type=="chess"}
 <Chessboard playingFirst={playingFirst} fen={$fen} myturn={myturn}></Chessboard>
+{/if}

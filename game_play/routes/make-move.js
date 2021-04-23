@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const authorization = require("../middleware/authorization");
 const { Match } = require("../mongodb");
+const { checkForWinner } = require("../utils/checkForWinner");
 
 router.post("/", authorization, async (req, res) => {
   try {
@@ -19,6 +20,16 @@ router.post("/", authorization, async (req, res) => {
         ? (opponent = match.player2_email)
         : (opponent = match.player1_email);
       //TODO make the move and check if game is finished (Update SQL databases if needed etc)
+      //console.log(match);
+      let game_status = checkForWinner(
+        match.game_type,
+        req.body.fen,
+        req.verifiedInfos.user_id,
+        match.game_id,
+        match._id,
+        match.in_tournament
+      );
+      //console.log(game_status);
       //change cur_player
       req.running_match.player1_email == match.cur_player;
       //console.log(match.cur_player);

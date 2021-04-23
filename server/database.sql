@@ -10,7 +10,14 @@ CREATE TABLE users(
     user_password VARCHAR(255) NOT NULL,
     user_role_player BIT DEFAULT '1',
     user_role_official BIT DEFAULT '0',
-    user_role_admin BIT DEFAULT '0'
+    user_role_admin BIT DEFAULT '0',
+    chess_w_count INTEGER DEFAULT 0 NOT NULL,
+    chess_t_count INTEGER DEFAULT 0 NOT NULL,
+    chess_l_count INTEGER DEFAULT 0 NOT NULL,
+    ttt_w_count INTEGER DEFAULT 0 NOT NULL,
+    ttt_t_count INTEGER DEFAULT 0 NOT NULL,
+    ttt_l_count INTEGER DEFAULT 0 NOT NULL
+
 );
 
 --insert fake users
