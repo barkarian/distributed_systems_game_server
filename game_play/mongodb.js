@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
+const { Chess } = require("chess.js");
+const chess = new Chess();
+chess.reset();
 const matchSchema = new Schema(
   {
     game_id: {
@@ -36,10 +38,20 @@ const matchSchema = new Schema(
       required: false,
       default: ""
     },
+    fen: {
+      type: String,
+      required: false,
+      default: chess.fen()
+    },
     moves: [
       {
         player: String,
-        move: String
+        from: String,
+        to: String,
+        promotion: {
+          type: Boolean,
+          default: false
+        }
       }
     ]
   },

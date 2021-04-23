@@ -23,7 +23,7 @@ module.exports = async (req, res, next) => {
         break;
       }
     }
-    //if running_match="" user cannot access
+    //if running_match is falsy user cannot access
     if (running_match) {
       req.running_match = running_match;
       next();

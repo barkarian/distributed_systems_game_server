@@ -6,7 +6,8 @@ router.post("/", authorization, async (req, res) => {
   try {
     match = await Match.findById(req.running_match.match_id).exec();
     if (match.cur_player == req.verifiedInfos.user_email) {
-      res.json({ success: true });
+      //console.log(match.fen);
+      res.json({ success: true, match: match });
     } else {
       res.json({ success: false });
     }

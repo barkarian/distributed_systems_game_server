@@ -1,8 +1,13 @@
 <script>
-import {onMount} from "svelte";
+import {onMount,onDestroy} from "svelte";
 import {curGame} from '../stores/store.js';
 import {user} from '../stores/store.js';
+import {moveDetails,fen} from '../stores/store.js';
+import Chessboard from "../utils/chess/chessboard.svelte"
 let myturn=true;
+let opponent;
+let playingFirst;//Boolean
+//REQUESTS
 const getMatch = async ()=>{
         try {
             const response=await fetch("http://localhost:5002/game/get-match-data",{
@@ -17,13 +22,17 @@ const getMatch = async ()=>{
             if(typeof(parseRes)==="string"){
                 throw parseRes 
             }
-            // console.log($user.user_email)
+            //get match details
+            playingFirst=$user.user_email==parseRes.player1_email;
+            $user.user_email==parseRes.player1_email?opponent=parseRes.player2_email:opponent=parseRes.player1_email;
+            //set new current potition
+            $fen=parseRes.fen;
+            //set new turn
             if(parseRes.cur_player==$user.user_email){
                 myturn=true
             }else{
                 myturn=false
             }
-            console.log(parseRes)
         }catch(err){
                 displayError=err
         }
@@ -31,12 +40,12 @@ const getMatch = async ()=>{
 
 const makeMove = async ()=>{
         try {
-            //parse response
+            //PARSE RESPONSE
             const response=await fetch("http://localhost:5002/game/make-move",{
                 method:"POST",
                 headers:{"Content-Type":"application/json",
                         "token":localStorage.getItem("token")},
-                body:JSON.stringify({match_id:$curGame})
+                body:JSON.stringify({match_id:$curGame,move:$moveDetails,fen:$fen})
             })
             const parseRes=await response.json()
             //THROW ERRORS
@@ -44,10 +53,12 @@ const makeMove = async ()=>{
             if(typeof(parseRes)==="string"){
                 throw parseRes 
             }
+            //set new myturn
             myturn=false
-            console.log(parseRes)
+            //set new current potition
+            $fen=parseRes.fen;
         }catch(err){
-                displayError=err
+            displayError=err
         }
     }
 
@@ -67,26 +78,44 @@ const getMyTurn = async ()=>{
                 throw parseRes 
             }
             if(parseRes.success){
+                //set turn
                 myturn=true
+                //set fen
+                $fen=parseRes.match.fen;
             }
-            //console.log(parseRes)
         }catch(err){
                 displayError=err
         }
     }
-    
-let interval_ID
-onMount(async()=>getMatch())
+//LIFECYCLES   
+onMount(async()=>{
+    await getMatch();
+})
+
+onDestroy(async() =>{ 
+    $curGame="";
+    clearInterval(interval_ID);
+    });
+
+//REACTIVITY
+let interval_ID;
 $:if(myturn==false){
     interval_ID=setInterval(() => getMyTurn(), 1000)
 }else if(myturn==true){
     clearInterval(interval_ID);
 }
+
+$:if($moveDetails!=''){
+    //console.log("inside move details")
+    makeMove();
+}
 </script>
 
 
 <h1>match_id is:{$curGame}</h1>
-<h1>My turn:{myturn}</h1>
 {#if myturn==true}
-<button on:click|preventDefault={makeMove}>make move</button>
+<h1>You're turn</h1>
+{:else}
+<h1>{opponent}'s turn</h1>
 {/if}
+<Chessboard playingFirst={playingFirst} fen={$fen} myturn={myturn}></Chessboard>

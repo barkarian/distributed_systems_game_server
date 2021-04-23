@@ -6,6 +6,8 @@ router.post("/", authorization, async (req, res) => {
   try {
     match = await Match.findById(req.running_match.match_id).exec();
     let updatedMatch;
+    let move = req.body.move;
+    move.player = req.verifiedInfos.user_email;
     //check if valid move
     //TODO
     let validMove = true;
@@ -20,11 +22,13 @@ router.post("/", authorization, async (req, res) => {
       //change cur_player
       req.running_match.player1_email == match.cur_player;
       //console.log(match.cur_player);
+      //console.log({ fen: req.body.fen }, move);
       updatedMatch = await Match.findByIdAndUpdate(
         req.running_match.match_id,
         {
-          cur_player: opponent
-          //update finished etc
+          fen: req.body.fen,
+          cur_player: opponent,
+          $push: { moves: move }
         },
         { new: true }
       );
