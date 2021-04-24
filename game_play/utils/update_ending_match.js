@@ -55,7 +55,7 @@ const updateEndingMatch = async (
     //find next tourn_game if exists
     if (finished_tourn_game.endgame === "1") {
       //TODO
-      //add code for endgames
+      //UPDATE endgames -> tournament_winners tournaments
     } else {
       const getTournamentNewGame = await pool.query(
         `select tournament_game_id,wait_match1,wait_match2,player1,player2,running 
