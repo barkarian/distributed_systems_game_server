@@ -38,7 +38,7 @@ router.post("/", authorization, async (req, res) => {
         );
         console.log({ savedMatch, finalSQLQuery });
         const changeGamesTable = await pool.query(finalSQLQuery);
-        res.json(`match starting,js `);
+        res.json(`match starting `);
       } else {
         const insertRequest = await pool.query(
           `INSERT INTO waiting_for_matches(player,game_type) VALUES ('${req.verifiedInfos.user_id}','${req.body.game_type}') RETURNING *`

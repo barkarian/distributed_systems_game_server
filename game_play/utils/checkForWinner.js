@@ -1,7 +1,7 @@
 const { Chess } = require("chess.js");
 const { updateEndingMatch } = require("./update_ending_match");
 
-const checkForWinner = (
+const checkForWinner = async (
   game_type,
   data,
   user_id,
@@ -22,7 +22,13 @@ const checkForWinner = (
   //updateEndingMatch(game_status, user_id, game_id, match_id, in_tournament);
 
   if (game_status == "win" || game_status == "tie") {
-    updateEndingMatch(game_status, user_id, game_id, match_id, in_tournament);
+    await updateEndingMatch(
+      game_status,
+      user_id,
+      game_id,
+      match_id,
+      in_tournament
+    );
   }
   return game_status;
 };

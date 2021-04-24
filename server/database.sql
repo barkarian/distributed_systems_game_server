@@ -82,4 +82,4 @@ UPDATE users SET user_role_official='0' ,user_role_admin='0' WHERE user_email!='
 
 --TESTING PURPOSES
 delete from tournaments;delete from tournament_games;delete from tournament_winners;delete from games;delete from waiting_for_matches;
-select from tournaments;select from tournament_games;select from tournament_winners;select from games;select from waiting_for_matches;
+select * from tournaments;select * from tournament_games;select * from tournament_winners;select * from games;select * from waiting_for_matches;

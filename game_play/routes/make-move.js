@@ -21,7 +21,7 @@ router.post("/", authorization, async (req, res) => {
         : (opponent = match.player1_email);
       //TODO make the move and check if game is finished (Update SQL databases if needed etc)
       //console.log(match);
-      let game_status = checkForWinner(
+      let game_status = await checkForWinner(
         match.game_type,
         req.body.fen,
         req.verifiedInfos.user_id,

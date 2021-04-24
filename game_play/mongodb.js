@@ -33,6 +33,11 @@ const matchSchema = new Schema(
       type: Boolean,
       required: true
     },
+    roundOfPlaying: {
+      type: Number,
+      required: false,
+      default: 1
+    },
     cur_player: {
       type: String,
       required: false,
