@@ -12,7 +12,7 @@ router.get("/get-my-matches", authorization, async (req, res) => {
       inner join "users" us1 on us1.user_id=ga.player1
       inner join "users" us2 on us2.user_id=ga.player2
       left join "users" win on win.user_id=ga.winner_id
-      where ga.player1='${user_id}' OR  ga.player2='${user_id}';`
+      where finished='1' AND ( ga.player1='${user_id}' OR  ga.player2='${user_id}') ;`
     );
     //TODO
     //add finished='1' AND
@@ -37,7 +37,7 @@ router.get("/get-tournaments-matches", authorization, async (req, res) => {
       inner join "users" us2 on ga.player2=us2.user_id
       left join "users" win on ga.winner_id=win.user_id
       inner join "tournaments" tourn on tourn.tournament_id=tga.tournament_id
-      where tga.tournament_id in (select distinct tournament_id 
+      where tga.finished='1' AND tga.tournament_id in (select distinct tournament_id 
                    from tournament_games 
                    where player1='${user_id}' OR player2='${user_id}');`
       //TODO
