@@ -2,6 +2,8 @@
 const e = require("express");
 const pool = require("../db");
 const { start_normal_game } = require("../utils/create_game");
+const { Match } = require("../mongodb");
+const { Chess } = require("chess.js");
 
 const updateEndingMatch = async (
   game_status,
@@ -35,17 +37,26 @@ const updateEndingMatch = async (
     updateGame = await pool.query(
       `UPDATE games SET finished='1',winner_id=${winner_id} WHERE game_id='${game_id}' RETURNING *`
     );
-    //TODO
+    console.log(updateGame.rows[0]);
+    //TODO -done
     //update Both Users Score
+    let opponent_id =
+      user_id == updateGame.rows[0].player1
+        ? updateGame.rows[0].player2
+        : updateGame.rows[0].player1;
+    console.log(opponent_id);
+    let game_type = updateGame.rows[0].game_type;
+    await updateUsersScores(user_id, opponent_id, game_type, game_status);
   }
 
   //when in_tournament==true UPDATE tournament_games
   if (in_tournament == true && game_status == "tie") {
-    //TODO
+    //TODO -done -UNTESTED
     //update match and only match-> new chessboard ->rematch
+    await resetMatch(match_id);
   } else if (in_tournament == true && game_status == "win") {
     const updateTournamentGame = await pool.query(
-      `update tournament_games SET finished='1' 
+      `update tournament_games SET finished='1' ,running='0'
       where tournament_game_id = (select tournament_game_id 
                                   from tournament_games 
                                   where game_id='${game_id}')
@@ -56,6 +67,25 @@ const updateEndingMatch = async (
     if (finished_tourn_game.endgame === "1") {
       //TODO
       //UPDATE endgames -> tournament_winners tournaments
+      //user_id wins the tournament
+      const insertTournamentWinners = await pool.query(
+        `INSERT INTO tournament_winners(tournament_id,winner_id) values ('${finished_tourn_game.tournament_id}','${user_id}')`
+      );
+      //if tournament has 4 users set as finished
+      const tournamentTotalWinners = await pool.query(
+        `SELECT COUNT(winner_id)
+        FROM tournament_winners
+        WHERE tournament_id='${finished_tourn_game.tournament_id}';`
+      );
+      console.log(tournamentTotalWinners.rows);
+      let winners_count = tournamentTotalWinners.rows[0].count;
+      if (winners_count == 4) {
+        const updateTournamentStatus = await pool.query(
+          `update tournaments SET finished='1' 
+          where tournament_id = '${finished_tourn_game.tournament_id}'
+                                      returning *;`
+        );
+      }
     } else {
       const getTournamentNewGame = await pool.query(
         `select tournament_game_id,wait_match1,wait_match2,player1,player2,running 
@@ -115,11 +145,11 @@ const updateEndingMatch = async (
         );
         updated_new_tourn_game = updateTournamentGameNew.rows;
         //logs
-        console.log({ msg: "msg", finished_tourn_game });
-        console.log({ msg: "msg", new_tourn_game });
-        console.log({ msg: "msg", player1_or_2 });
-        console.log({ msg: "msg", match_starting });
-        console.log({ msg: "msg", updated_new_tourn_game });
+        // console.log({ msg: "msg", finished_tourn_game });
+        // console.log({ msg: "msg", new_tourn_game });
+        // console.log({ msg: "msg", player1_or_2 });
+        // console.log({ msg: "msg", match_starting });
+        // console.log({ msg: "msg", updated_new_tourn_game });
       }
     }
     //console.log(updateTournamentGame.rows[0]);
@@ -129,4 +159,56 @@ const updateEndingMatch = async (
   //and if player1 AND player2 !=NULL UPDATE running='1' and createGame()
   return;
 };
+
+const updateUsersScores = async (
+  user_id,
+  opponent_id,
+  game_type,
+  game_status
+) => {
+  let updatingColumn_1stSynthetic;
+  switch (game_type) {
+    case "chess":
+      //console.log({ game_type, data });
+      updatingColumn_1stSynthetic = "chess";
+      break;
+    case "tic-tac-toe":
+      updatingColumn_1stSynthetic = "ttt";
+      break;
+  }
+  //UNTESTED if condition -else if is tested
+  if (game_status == "tie") {
+    let updatingColumn = updatingColumn_1stSynthetic + "_t_count";
+    const updatedScores = await pool.query(
+      `update users 
+          SET ${updatingColumn}=${updatingColumn}+1
+          where user_id = '${user_id}' OR user_id = '${opponent_id}'
+          returning *;`
+    );
+  } else if (game_status == "win") {
+    let updatingColumnWinner = updatingColumn_1stSynthetic + "_w_count";
+    let updatingColumnLoser = updatingColumn_1stSynthetic + "_l_count";
+    const updatedScores = await pool.query(
+      `update users 
+          SET ${updatingColumnWinner}=${updatingColumnWinner}+1
+          where user_id = '${user_id}';` +
+        `update users 
+          SET ${updatingColumnLoser}=${updatingColumnLoser}+1
+          where user_id = '${opponent_id}';`
+    );
+  }
+};
+
+const resetMatch = async (match_id) => {
+  const chess = new Chess();
+  chess.reset();
+  let updatedMatch = await Match.findByIdAndUpdate(
+    match_id,
+    {
+      fen: chess.fen()
+    },
+    { new: true }
+  );
+};
+
 module.exports = { updateEndingMatch };

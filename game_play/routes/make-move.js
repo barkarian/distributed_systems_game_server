@@ -34,15 +34,27 @@ router.post("/", authorization, async (req, res) => {
       req.running_match.player1_email == match.cur_player;
       //console.log(match.cur_player);
       //console.log({ fen: req.body.fen }, move);
-      updatedMatch = await Match.findByIdAndUpdate(
-        req.running_match.match_id,
-        {
-          fen: req.body.fen,
-          cur_player: opponent,
-          $push: { moves: move }
-        },
-        { new: true }
-      );
+      //UNTESTED if block -else block works
+      if (game_status == "tie" && match.in_tournament == true) {
+        updatedMatch = await Match.findByIdAndUpdate(
+          req.running_match.match_id,
+          {
+            cur_player: opponent,
+            $push: { moves: move }
+          },
+          { new: true }
+        );
+      } else {
+        updatedMatch = await Match.findByIdAndUpdate(
+          req.running_match.match_id,
+          {
+            fen: req.body.fen,
+            cur_player: opponent,
+            $push: { moves: move }
+          },
+          { new: true }
+        );
+      }
       res.json(updatedMatch);
     } else if (match.cur_player == req.verifiedInfos.user_email && !validMove) {
       res.json({ success: false, msg: "not valid move" });
