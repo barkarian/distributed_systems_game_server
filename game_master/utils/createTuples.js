@@ -76,7 +76,7 @@ const startTournament = async (gameBacket, phases, tournament_id) => {
       "INSERT INTO tournament_games(game_id,running,scheduled,endgame,finished,wait_match1,wait_match2,player1,player2,phases,phase,phase_id,tournament_id,tournament_game_id) VALUES";
     for (var phase = 1; phase <= phases; phase++) {
       //Balancing algorithm to have 4 endgames
-      if (phase == phases && gameBacket.length >= 5 && gameBacket.length <= 7) {
+      if (phase == phases && gameBacket.length >= 4 && gameBacket.length <= 7) {
         const loops = 8 - gameBacket.length;
         var endgame;
         for (let i = 1; i <= loops; i++) {
