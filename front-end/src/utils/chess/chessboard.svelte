@@ -3,7 +3,7 @@
     //this code needs cm-chessboard and the chess
     //also add /assets/images
     import {onMount,onDestroy,beforeUpdate,afterUpdate} from 'svelte';
-    import {Chessboard,COLOR,INPUT_EVENT_TYPE} from "/node_modules/cm-chessboard/src/cm-chessboard/Chessboard.js"
+    import {Chessboard,COLOR,INPUT_EVENT_TYPE} from "cm-chessboard"
 	import {Chess} from "chess.js";
     import {moveDetails,fen as fenIO} from '../../stores/store.js';
     //props
