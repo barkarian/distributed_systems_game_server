@@ -53,4 +53,37 @@ router.get("/get-tournaments-matches", authorization, async (req, res) => {
   }
 });
 
+router.post("/get-players-scores", authorization, async (req, res) => {
+  try {
+    const { user_id } = req.verifiedInfos;
+    const { game_type } = req.body;
+
+    let column1stSynthetic;
+    switch (game_type) {
+      case "chess":
+        column1stSynthetic = "chess";
+        break;
+      case "tic-tac-toe":
+        column1stSynthetic = "ttt";
+        break;
+      default:
+        throw "game isn't supported by our platform";
+    }
+    //1.request to the database
+    const dbRes = await pool.query(
+      `select user_id,user_name,user_email,
+      (chess_w_count-chess_l_count)/2 as chess_score,
+      (ttt_w_count-ttt_l_count)/2 as ttt_score
+      from users
+      where user_role_player='1'
+      ORDER BY ${column1stSynthetic}_score DESC;`
+    );
+    //console.log(allIndividualMatches);
+    res.json(dbRes.rows);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json("Server Error");
+  }
+});
+
 module.exports = router;

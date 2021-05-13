@@ -59,7 +59,6 @@
         await chessboard.destroy();
         $fenIO='';
         $moveDetails='';
-
     });
 
     afterUpdate(async()=>{

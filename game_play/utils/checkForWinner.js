@@ -7,7 +7,8 @@ const checkForWinner = async (
   user_id,
   game_id,
   match_id,
-  in_tournament
+  in_tournament,
+  game_status_front
 ) => {
   let game_status;
   switch (game_type) {
@@ -16,8 +17,7 @@ const checkForWinner = async (
       game_status = checkChess(data);
       break;
     case "tic-tac-toe":
-      //TODO
-      // code block
+      game_status = game_status_front;
       break;
   }
   //updateEndingMatch(game_status, user_id, game_id, match_id, in_tournament);

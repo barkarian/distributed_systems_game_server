@@ -1,12 +1,13 @@
 <script>
-import {onMount,onDestroy} from "svelte";
+import {onMount,onDestroy, beforeUpdate} from "svelte";
 import {curGame} from '../stores/store.js';
 import {user} from '../stores/store.js';
 import {moveDetails,fen} from '../stores/store.js';
 import Chessboard from "../utils/chess/chessboard.svelte"
+import TttBoard from "../utils/ttt/ttt_board.svelte"
 let myturn=true;
 let opponent;
-let playingFirst;//Boolean
+let playingFirst=true;//Boolean
 let game_type;
 //REQUESTS
 const getMatch = async ()=>{
@@ -91,7 +92,7 @@ const getMyTurn = async ()=>{
         }
     }
 //LIFECYCLES   
-onMount(async()=>{
+beforeUpdate(async()=>{
     await getMatch();
 })
 
@@ -123,4 +124,6 @@ $:if($moveDetails!=''){
 {/if}
 {#if game_type=="chess"}
 <Chessboard playingFirst={playingFirst} fen={$fen} myturn={myturn}></Chessboard>
+{:else if game_type=="tic-tac-toe"}
+<TttBoard playingFirst={playingFirst} fen={$fen} myturn={myturn}></TttBoard>
 {/if}

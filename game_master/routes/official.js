@@ -9,7 +9,7 @@ const e = require("express");
 router.get("/get-all-players", authorizationOfficial, async (req, res) => {
   try {
     const allPlayers = await pool.query(
-      "SELECT user_id,user_email,user_name FROM users WHERE user_role_player='1'"
+      "SELECT user_id,user_email,user_name FROM users WHERE user_role_player='1' order by user_email"
     );
     if (allPlayers.rows.length === 0) {
       return res.json("There's no users (all users except admins)");
@@ -59,6 +59,22 @@ router.post("/create-tournament", authorizationOfficial, async (req, res) => {
       res.status(500).json("Couldn't start tournament");
     }
     //start the running games
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json("Server Error");
+  }
+});
+
+router.get("/my-tournaments", authorizationOfficial, async (req, res) => {
+  try {
+    //1.get important data
+    const official_id = req.verifiedInfos.user_id;
+    //2.get my tournaments
+    const my_tournaments = await pool.query(
+      `select * from tournaments where tournament_creator='${official_id}';`
+    );
+    //console.log(my_tournaments.rows);
+    res.json(my_tournaments.rows);
   } catch (err) {
     console.error(err.message);
     res.status(500).json("Server Error");

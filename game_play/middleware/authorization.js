@@ -13,7 +13,7 @@ module.exports = async (req, res, next) => {
     req.verifiedInfos = payload;
     req.user_id = payload;
     // console.log({ msg: "valid token is", matches: payload.matches });
-    // console.log({ msg: "body is", body: req.body });
+    //console.log({ msg: "body is", body: req.body });
     const matches = payload.matches;
     let running_match;
     for (let i = 0; i < matches.length; i++) {

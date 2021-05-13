@@ -5,9 +5,16 @@ const { checkForWinner } = require("../utils/checkForWinner");
 
 router.post("/", authorization, async (req, res) => {
   try {
+    //console.log("inside");
     match = await Match.findById(req.running_match.match_id).exec();
     let updatedMatch;
     let move = req.body.move;
+    let game_status_front;
+    //when the validation of win or lose happens only front end for example in tic-tac-toe
+    //we pass win or tie from move.player to indicate that a match has ended
+    if (move.player == "win" || move.player == "tie") {
+      game_status_front = move.player;
+    }
     move.player = req.verifiedInfos.user_email;
     //check if valid move
     //TODO
@@ -27,13 +34,14 @@ router.post("/", authorization, async (req, res) => {
         req.verifiedInfos.user_id,
         match.game_id,
         match._id,
-        match.in_tournament
+        match.in_tournament,
+        game_status_front
       );
       //console.log(game_status);
       //change cur_player
       req.running_match.player1_email == match.cur_player;
       //console.log(match.cur_player);
-      //console.log({ fen: req.body.fen }, move);
+
       //UNTESTED if block -else block works
       if (game_status == "tie" && match.in_tournament == true) {
         updatedMatch = await Match.findByIdAndUpdate(
@@ -45,6 +53,7 @@ router.post("/", authorization, async (req, res) => {
           { new: true }
         );
       } else {
+        //console.log({ fen: req.body.fen }, move, opponent);
         updatedMatch = await Match.findByIdAndUpdate(
           req.running_match.match_id,
           {
@@ -55,6 +64,7 @@ router.post("/", authorization, async (req, res) => {
           { new: true }
         );
       }
+      //console.log(updatedMatch);
       res.json(updatedMatch);
     } else if (match.cur_player == req.verifiedInfos.user_email && !validMove) {
       res.json({ success: false, msg: "not valid move" });

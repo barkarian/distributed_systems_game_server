@@ -15,15 +15,22 @@ router.post("/", authorization, async (req, res) => {
       //TODO    Maybe someother initializations required here
       //EXAMPLE Maybe chess and tic-tac-toc need different initializations
       //Remember to change mongoose schema as well ("../mongodb")
+      let propsUpdatedMatch = {
+        cur_player: req.running_match.player1_email,
+        player1_email: req.running_match.player1_email,
+        player2_email: req.running_match.player2_email
+      };
+      //add different fen for tic-tac-toe
+      if (match.game_type == "tic-tac-toe") {
+        propsUpdatedMatch.fen =
+          "[null,null,null,null,null,null,null,null,null]";
+      }
       updatedMatch = await Match.findByIdAndUpdate(
         req.running_match.match_id,
-        {
-          cur_player: req.running_match.player1_email,
-          player1_email: req.running_match.player1_email,
-          player2_email: req.running_match.player2_email
-        },
+        propsUpdatedMatch,
         { new: true }
       );
+      console.log(updatedMatch);
       res.json(updatedMatch);
     }
   } catch (err) {

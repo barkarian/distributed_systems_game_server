@@ -10,6 +10,7 @@
     {:else}
         <a href="/my-matches">My Matches</a>
         <a href="/search-matches">Search Matches</a>
+        <a href="/players-scores">Score Board</a>
         <a href="/new-game">New game</a>
         <a href="/profile"><bold>👽{$user.user_email}</bold></a>
     {/if}
