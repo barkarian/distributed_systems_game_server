@@ -92,7 +92,7 @@ const getMyTurn = async ()=>{
         }
     }
 //LIFECYCLES   
-beforeUpdate(async()=>{
+onMount(async()=>{
     await getMatch();
 })
 

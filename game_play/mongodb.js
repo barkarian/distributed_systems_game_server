@@ -68,6 +68,8 @@ const matchSchema = new Schema(
 const Match = mongoose.model("Match", matchSchema);
 
 const connectToMongo = async () => {
+  //add new url
+  //previous url:"mongodb://localhost/NewDb"
   try {
     const mongoResponse = await mongoose.connect("mongodb://localhost/NewDb", {
       useNewUrlParser: true,
@@ -75,10 +77,10 @@ const connectToMongo = async () => {
       useFindAndModify: false,
       useCreateIndex: true
     });
-    // console.log({
-    //   msg: "We connect to Mongo (via Mongoose module)",
-    //   mongoResponse
-    // });
+    console.log({
+      msg: "We connect to Mongo (via Mongoose module)",
+      mongoResponse
+    });
   } catch (err) {
     console.error(err.message);
     res.status(500).json("Error when trying to create to database");

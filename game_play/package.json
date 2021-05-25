@@ -4,6 +4,7 @@
   "description": "socket.io with middleware and auth",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon -L",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -17,5 +18,8 @@
     "mongoose": "^5.12.3",
     "pg": "^8.6.0",
     "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }

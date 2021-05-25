@@ -1,0 +1,60 @@
+version: "3.8"
+services:
+  # frontend
+  auth:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules # Remove this if you have pure JS dependencies
+    depends_on:
+      - postgres
+    ports:
+      - "5000:5000"
+  game_master:
+    build:
+      context: ./game_master
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./game_master:/usr/src/app
+      - /usr/src/app/node_modules # Remove this if you have pure JS dependencies
+    depends_on:
+      - postgres
+    ports:
+      - "5001:5001"
+  game_play:
+    build:
+      context: ./game_play
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./game_play:/usr/src/app
+      - /usr/src/app/node_modules # Remove this if you have pure JS dependencies
+    depends_on:
+      - postgres
+    ports:
+      - "5002:5002"
+
+  #dbs
+  # postgres:
+  #   image: postgres
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: password
+  #     POSTGRES_DB: authdb
+  #   volumes:
+  #     - ./pgdata:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+  postgres:
+    image: "postgres:latest"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: authdb
+    volumes:
+      - ./server/postgres_init:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+# volumes:
+#  data:
