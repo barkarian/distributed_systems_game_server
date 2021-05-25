@@ -71,7 +71,7 @@ const connectToMongo = async () => {
   //add new url
   //previous url:"mongodb://localhost/NewDb"
   try {
-    const mongoResponse = await mongoose.connect("mongodb://localhost/NewDb", {
+    const mongoResponse = await mongoose.connect("mongodb://mongodb/NewDb", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,

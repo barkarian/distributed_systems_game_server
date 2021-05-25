@@ -1,6 +1,16 @@
 version: "3.8"
 services:
   # frontend
+  front-end:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./front-end:/usr/src/app
+      - /usr/src/app/node_modules # Remove this if you have pure JS dependencies
+    ports:
+      - "3000:3000"
+
   auth:
     build:
       context: ./server
@@ -12,6 +22,7 @@ services:
       - postgres
     ports:
       - "5000:5000"
+
   game_master:
     build:
       context: ./game_master
@@ -23,6 +34,7 @@ services:
       - postgres
     ports:
       - "5001:5001"
+
   game_play:
     build:
       context: ./game_play
@@ -48,13 +60,26 @@ services:
   #     - "5432:5432"
   postgres:
     image: "postgres:latest"
+    restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: authdb
     volumes:
-      - ./server/postgres_init:/docker-entrypoint-initdb.d
+      - ./postgres-data:/var/lib/postgresql/data
+      # copy the sql script to create tables
+      - ./postgres_init/database.sql:/docker-entrypoint-initdb.d/create-tables.sql
     ports:
       - "5432:5432"
-# volumes:
-#  data:
+
+  mongodb:
+    image: mongo:latest
+    container_name: "mongodb"
+    volumes:
+      - mongodb:/data/db
+      - mongodb_config:/data/configdb
+    ports:
+      - 27017:27017
+volumes:
+  mongodb:
+  mongodb_config:

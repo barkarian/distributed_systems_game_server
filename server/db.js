@@ -4,7 +4,7 @@ const pool = new Pool({
   database: "authdb",
   user: "postgres",
   password: "password",
-  host: "localhost", //localhost->database DOCKER
+  host: "postgres", //localhost-> postgres
   port: 5432
 });
 
