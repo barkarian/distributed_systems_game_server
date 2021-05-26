@@ -48,7 +48,7 @@
 </label>
 <ul>
     {#each playersScores as player (player.user_id)}
-    <li>{player.user_name}{player.user_email} = 
+    <li>{player.user_name} {player.user_email} = 
         {#if selected=="1"}
             {player.chess_score}
         {:else}

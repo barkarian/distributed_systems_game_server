@@ -14,7 +14,7 @@
 
 
   function handleClick(i) {
-    if(!myturn){
+    if(!myturn || winnerMsg){
       return;
     }
     if (!squares[i]) {
@@ -130,10 +130,10 @@
 {:else}
   <h3>{status}</h3>
 {/if}
-<h3>iAmX {iAmX}</h3>
+<!-- <h3>iAmX {iAmX}</h3>
 <h3>winner {winner}</h3>
 <h3>my turn{myturn}</h3>
-<h3>xIsNext {xIsNext}</h3>
+<h3>xIsNext {xIsNext}</h3> -->
 
 <div class="board">
   {#each squares as square, i}

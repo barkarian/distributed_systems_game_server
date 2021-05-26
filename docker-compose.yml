@@ -1,15 +1,21 @@
 version: "3.8"
 services:
-  # frontend
-  front-end:
-    build:
-      context: ./front-end
-      dockerfile: Dockerfile.dev
-    volumes:
-      - ./front-end:/usr/src/app
-      - /usr/src/app/node_modules # Remove this if you have pure JS dependencies
-    ports:
-      - "3000:3000"
+  # frontend doesnt work with vite
+
+  #so if you are in development mode:
+  #comment out this component and use vite instead----------------------------------
+  #open terminal go to ./front-end and run "npm run dev"
+
+  # front-end:
+  #   build:
+  #     context: ./front-end
+  #     dockerfile: Dockerfile.dev
+  #   volumes:
+  #     - ./front-end:/usr/src/app
+  #     - /usr/src/app/node_modules # Remove this if you have pure JS dependencies
+  #   ports:
+  #     - "3000:3000"
+  #comment out this component and use vite instead----------------------------------
 
   auth:
     build:
@@ -32,6 +38,7 @@ services:
       - /usr/src/app/node_modules # Remove this if you have pure JS dependencies
     depends_on:
       - postgres
+      - mongodb
     ports:
       - "5001:5001"
 
@@ -44,20 +51,11 @@ services:
       - /usr/src/app/node_modules # Remove this if you have pure JS dependencies
     depends_on:
       - postgres
+      - mongodb
     ports:
       - "5002:5002"
 
   #dbs
-  # postgres:
-  #   image: postgres
-  #   environment:
-  #     POSTGRES_USER: postgres
-  #     POSTGRES_PASSWORD: password
-  #     POSTGRES_DB: authdb
-  #   volumes:
-  #     - ./pgdata:/var/lib/postgresql/data
-  #   ports:
-  #     - "5432:5432"
   postgres:
     image: "postgres:latest"
     restart: always
