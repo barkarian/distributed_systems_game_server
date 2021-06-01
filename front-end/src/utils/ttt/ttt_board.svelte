@@ -18,6 +18,4 @@
     });
 </script>
 
-<p>{myturn}</p>
-<p>{fen}</p>
 <Board iAmX ={playingFirst} myturn={myturn} squares={fenParsed}></Board>

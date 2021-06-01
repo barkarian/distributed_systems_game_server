@@ -1944,7 +1944,7 @@ const components = [
     return game;
   })
 ];
-const client_component_lookup = {".svelte/build/runtime/internal/start.js": "start-b8701432.js", "src/routes/index.svelte": "pages\\index.svelte-c5f4fd49.js", "src/routes/players-scores.svelte": "pages\\players-scores.svelte-340d3ce6.js", "src/routes/search-matches.svelte": "pages\\search-matches.svelte-cb469a08.js", "src/routes/my-matches.svelte": "pages\\my-matches.svelte-8673cd04.js", "src/routes/new-game.svelte": "pages\\new-game.svelte-968ea955.js", "src/routes/register.svelte": "pages\\register.svelte-cee224de.js", "src/routes/profile.svelte": "pages\\profile.svelte-5e557425.js", "src/routes/about.svelte": "pages\\about.svelte-9f75ccfc.js", "src/routes/login.svelte": "pages\\login.svelte-863eefba.js", "src/routes/game.svelte": "pages\\game.svelte-a5955edb.js"};
+const client_component_lookup = {".svelte/build/runtime/internal/start.js": "start-c2fe6396.js", "src/routes/index.svelte": "pages\\index.svelte-c5f4fd49.js", "src/routes/players-scores.svelte": "pages\\players-scores.svelte-f2f1f9a5.js", "src/routes/search-matches.svelte": "pages\\search-matches.svelte-f52488fb.js", "src/routes/my-matches.svelte": "pages\\my-matches.svelte-68fc337a.js", "src/routes/new-game.svelte": "pages\\new-game.svelte-968ea955.js", "src/routes/register.svelte": "pages\\register.svelte-cee224de.js", "src/routes/profile.svelte": "pages\\profile.svelte-5e557425.js", "src/routes/about.svelte": "pages\\about.svelte-9f75ccfc.js", "src/routes/login.svelte": "pages\\login.svelte-863eefba.js", "src/routes/game.svelte": "pages\\game.svelte-a3f64ead.js"};
 const manifest = {
   assets: [{file: "assets/images/chessboard-sprite-staunty.svg", size: 28899, type: "image/svg+xml"}, {file: "assets/images/chessboard-sprite.svg", size: 24188, type: "image/svg+xml"}, {file: "cm-chessboard.css", size: 5632, type: "text/css"}, {file: "favicon.ico", size: 1150, type: "image/vnd.microsoft.icon"}, {file: "robots.txt", size: 67, type: "text/plain"}],
   layout: () => Promise.resolve().then(function() {
@@ -1960,7 +1960,7 @@ const manifest = {
       params: empty,
       parts: [{id: "src/routes/index.svelte", load: components[0]}],
       css: ["assets/start-0590d930.css", "assets/pages\\index.svelte-6e9a9164.css"],
-      js: ["start-b8701432.js", "chunks/index-a2f0fece.js", "chunks/store-bfd594f8.js", "chunks/navigation-ecc5701b.js", "pages\\index.svelte-c5f4fd49.js"]
+      js: ["start-c2fe6396.js", "chunks/index-a2f0fece.js", "chunks/store-bfd594f8.js", "chunks/navigation-ecc5701b.js", "pages\\index.svelte-c5f4fd49.js"]
     },
     {
       type: "page",
@@ -1968,7 +1968,7 @@ const manifest = {
       params: empty,
       parts: [{id: "src/routes/players-scores.svelte", load: components[1]}],
       css: ["assets/start-0590d930.css", "assets/GameCard.svelte-c4847582.css"],
-      js: ["start-b8701432.js", "chunks/index-a2f0fece.js", "chunks/store-bfd594f8.js", "chunks/navigation-ecc5701b.js", "pages\\players-scores.svelte-340d3ce6.js"]
+      js: ["start-c2fe6396.js", "chunks/index-a2f0fece.js", "chunks/store-bfd594f8.js", "chunks/navigation-ecc5701b.js", "pages\\players-scores.svelte-f2f1f9a5.js"]
     },
     {
       type: "page",
@@ -1976,7 +1976,7 @@ const manifest = {
       params: empty,
       parts: [{id: "src/routes/search-matches.svelte", load: components[2]}],
       css: ["assets/start-0590d930.css", "assets/GameCard.svelte-c4847582.css"],
-      js: ["start-b8701432.js", "chunks/index-a2f0fece.js", "chunks/store-bfd594f8.js", "chunks/navigation-ecc5701b.js", "pages\\search-matches.svelte-cb469a08.js"]
+      js: ["start-c2fe6396.js", "chunks/index-a2f0fece.js", "chunks/store-bfd594f8.js", "chunks/navigation-ecc5701b.js", "pages\\search-matches.svelte-f52488fb.js"]
     },
     {
       type: "page",
@@ -1984,7 +1984,7 @@ const manifest = {
       params: empty,
       parts: [{id: "src/routes/my-matches.svelte", load: components[3]}],
       css: ["assets/start-0590d930.css"],
-      js: ["start-b8701432.js", "chunks/index-a2f0fece.js", "chunks/store-bfd594f8.js", "chunks/navigation-ecc5701b.js", "pages\\my-matches.svelte-8673cd04.js"]
+      js: ["start-c2fe6396.js", "chunks/index-a2f0fece.js", "chunks/store-bfd594f8.js", "chunks/navigation-ecc5701b.js", "pages\\my-matches.svelte-68fc337a.js"]
     },
     {
       type: "page",
@@ -1992,7 +1992,7 @@ const manifest = {
       params: empty,
       parts: [{id: "src/routes/new-game.svelte", load: components[4]}],
       css: ["assets/start-0590d930.css"],
-      js: ["start-b8701432.js", "chunks/index-a2f0fece.js", "chunks/store-bfd594f8.js", "chunks/navigation-ecc5701b.js", "pages\\new-game.svelte-968ea955.js"]
+      js: ["start-c2fe6396.js", "chunks/index-a2f0fece.js", "chunks/store-bfd594f8.js", "chunks/navigation-ecc5701b.js", "pages\\new-game.svelte-968ea955.js"]
     },
     {
       type: "page",
@@ -2000,7 +2000,7 @@ const manifest = {
       params: empty,
       parts: [{id: "src/routes/register.svelte", load: components[5]}],
       css: ["assets/start-0590d930.css"],
-      js: ["start-b8701432.js", "chunks/index-a2f0fece.js", "chunks/store-bfd594f8.js", "chunks/navigation-ecc5701b.js", "pages\\register.svelte-cee224de.js"]
+      js: ["start-c2fe6396.js", "chunks/index-a2f0fece.js", "chunks/store-bfd594f8.js", "chunks/navigation-ecc5701b.js", "pages\\register.svelte-cee224de.js"]
     },
     {
       type: "page",
@@ -2008,7 +2008,7 @@ const manifest = {
       params: empty,
       parts: [{id: "src/routes/profile.svelte", load: components[6]}],
       css: ["assets/start-0590d930.css"],
-      js: ["start-b8701432.js", "chunks/index-a2f0fece.js", "chunks/store-bfd594f8.js", "chunks/navigation-ecc5701b.js", "pages\\profile.svelte-5e557425.js"]
+      js: ["start-c2fe6396.js", "chunks/index-a2f0fece.js", "chunks/store-bfd594f8.js", "chunks/navigation-ecc5701b.js", "pages\\profile.svelte-5e557425.js"]
     },
     {
       type: "page",
@@ -2016,7 +2016,7 @@ const manifest = {
       params: empty,
       parts: [{id: "src/routes/about.svelte", load: components[7]}],
       css: ["assets/start-0590d930.css"],
-      js: ["start-b8701432.js", "chunks/index-a2f0fece.js", "chunks/store-bfd594f8.js", "chunks/navigation-ecc5701b.js", "pages\\about.svelte-9f75ccfc.js"]
+      js: ["start-c2fe6396.js", "chunks/index-a2f0fece.js", "chunks/store-bfd594f8.js", "chunks/navigation-ecc5701b.js", "pages\\about.svelte-9f75ccfc.js"]
     },
     {
       type: "page",
@@ -2024,7 +2024,7 @@ const manifest = {
       params: empty,
       parts: [{id: "src/routes/login.svelte", load: components[8]}],
       css: ["assets/start-0590d930.css"],
-      js: ["start-b8701432.js", "chunks/index-a2f0fece.js", "chunks/store-bfd594f8.js", "chunks/navigation-ecc5701b.js", "pages\\login.svelte-863eefba.js"]
+      js: ["start-c2fe6396.js", "chunks/index-a2f0fece.js", "chunks/store-bfd594f8.js", "chunks/navigation-ecc5701b.js", "pages\\login.svelte-863eefba.js"]
     },
     {
       type: "page",
@@ -2032,7 +2032,7 @@ const manifest = {
       params: empty,
       parts: [{id: "src/routes/game.svelte", load: components[9]}],
       css: ["assets/start-0590d930.css", "assets/pages\\game.svelte-7a74ad43.css"],
-      js: ["start-b8701432.js", "chunks/index-a2f0fece.js", "chunks/store-bfd594f8.js", "chunks/navigation-ecc5701b.js", "pages\\game.svelte-a5955edb.js", "chunks/vendor-e90a73bf.js"]
+      js: ["start-c2fe6396.js", "chunks/index-a2f0fece.js", "chunks/store-bfd594f8.js", "chunks/navigation-ecc5701b.js", "pages\\game.svelte-a3f64ead.js", "chunks/vendor-e90a73bf.js"]
     }
   ]
 };
@@ -2057,7 +2057,7 @@ function render(request, {
     template,
     manifest,
     target: "#svelte",
-    entry: "/./_app/start-b8701432.js",
+    entry: "/./_app/start-c2fe6396.js",
     root: Root,
     hooks,
     dev: false,
@@ -2161,7 +2161,7 @@ const Players_scores = create_ssr_component(($$result, $$props, $$bindings, slot
 <label><input type="${"radio"}"${add_attribute("value", 2, 0)}>
 	tic-tac-toe 
 </label>
-<ul>${each(playersScores2, (player) => `<li>${escape(player.user_name)}${escape(player.user_email)} = 
+<ul>${each(playersScores2, (player) => `<li><b>${escape(player.user_email)}</b>  = 
         ${`${escape(player.ttt_score)}`}
     </li>`)}</ul>`;
 });
@@ -2180,7 +2180,10 @@ const Search_matches = create_ssr_component(($$result, $$props, $$bindings, slot
 <label><input type="${"radio"}"${add_attribute("value", 2, 0)}>
 	My own games results
 </label>
-<ul>${each(matches, (match) => `<li>${escape(match.player1_email)} vs ${escape(match.player2_email)} =${escape(match.winner_email == null ? "TIE" : match.winner_email)} </li>`)}</ul>`;
+<ul>${each(matches, (match) => `<li>${match.tournament_name ? `<b>${escape(match.tournament_name)}/</b>` : ``}
+        <b>${escape(match.game_type)}-&gt;</b> 
+        ${match.tournament_name ? `<b>phase:${escape(match.phase)} phases:${escape(match.phases)}/</b>` : ``}
+        <p>${escape(match.player1_email)} vs ${escape(match.player2_email)} =${escape(match.winner_email == null ? "TIE" : match.winner_email)}</p> </li>`)}</ul>`;
 });
 var searchMatches = /* @__PURE__ */ Object.freeze({
   __proto__: null,
@@ -2213,6 +2216,7 @@ const My_matches = create_ssr_component(($$result, $$props, $$bindings, slots) =
       }
       localStorage.setItem("token", parseRes.token);
       runningGames = parseRes.allIndividualMatches;
+      console.log(runningGames);
     } catch (err) {
       console.log(err);
     }
@@ -2220,9 +2224,11 @@ const My_matches = create_ssr_component(($$result, $$props, $$bindings, slots) =
   onMount(async () => searchForRunningGames());
   $$unsubscribe_curGame();
   return `<h1>Your Running Matches are</h1>
-<ul>${each(runningGames, (game2) => `<li${add_attribute("current", game2.match_id, 0)}>id:${escape(game2.match_id)} player1:${escape(game2.player1_email)} VS player2:${escape(game2.player2_email)} 
-        phases:${escape(game2.phases)},phase:${escape(game2.phase)},phase_id:${escape(game2.phases)},endgame:${escape(game2.endgame)}</li>
-        <input type="${"radio"}"${add_attribute("value", game2.match_id, 0)}>`)}</ul>
+<ul>${each(runningGames, (game2) => `<li${add_attribute("current", game2.match_id, 0)}>${game2.phases ? `<b>${escape(game2.tournament_name)} /phases:${escape(game2.phases)},phase:${escape(game2.phase)},phase_id:${escape(game2.phases)},endgame:${escape(game2.endgame)}</b>` : `<b>Practice play</b>`}
+            <p><b>${escape(game2.game_type)}-&gt;</b>
+                player1:${escape(game2.player1_email)} VS player2:${escape(game2.player2_email)} 
+                <input type="${"radio"}"${add_attribute("value", game2.match_id, 0)}></p>   
+    </li>`)}</ul>
 <p>${escape(selectedMatch)}</p>`;
 });
 var myMatches = /* @__PURE__ */ Object.freeze({
@@ -5548,9 +5554,8 @@ const Square = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 var Board_svelte = "h3.svelte-dt6evk{color:red}.board.svelte-dt6evk{display:flex;flex-wrap:wrap;width:300px}";
 const css$2 = {
   code: "h3.svelte-dt6evk{color:red}.board.svelte-dt6evk{display:flex;flex-wrap:wrap;width:300px}",
-  map: `{"version":3,"file":"Board.svelte","sources":["Board.svelte"],"sourcesContent":["<script>\\r\\n  import Square from \\"./Square.svelte\\";\\r\\n  import {moveDetails,fen as fenIO} from '../../stores/store.js';\\r\\n  import {onMount,onDestroy,beforeUpdate,afterUpdate} from 'svelte';\\r\\n\\r\\n  export let iAmX=true;\\r\\n  export let myturn;\\r\\n  export let squares;\\r\\n\\r\\n  let winnerMsg = null;\\r\\n  let winner=\\"none\\";\\r\\n  let xIsNext ;\\r\\n  $: status = \\"Next Player: \\" + (xIsNext ? \\"X\\" : \\"0\\");\\r\\n\\r\\n\\r\\n  function handleClick(i) {\\r\\n    if(!myturn){\\r\\n      return;\\r\\n    }\\r\\n    if (!squares[i]) {\\r\\n      squares[i] = xIsNext ? \\"X\\" : \\"0\\";\\r\\n      xIsNext = !xIsNext;\\r\\n      winnerMsg = calculateWinner(squares);\\r\\n      console.log({msg:\\"everything works fine\\",winnerMsg})\\r\\n    }\\r\\n    $fenIO=JSON.stringify(squares);\\r\\n    const move={\\r\\n      player: xIsNext ? \\"X\\" : \\"0\\",\\r\\n      from: \\"\\",\\r\\n      to: \`\${i}\`,\\r\\n    }\\r\\n    if(winnerMsg){\\r\\n      switch(winnerMsg) {\\r\\n      case \\"Winner: X\\":\\r\\n        move.player=\\"win\\"\\r\\n        break;\\r\\n      case \\"Winner: 0\\":\\r\\n        //move.player=move.player+\\" win\\"\\r\\n        move.player=\\"win\\"\\r\\n        console.log(iAmX)\\r\\n        break;\\r\\n      case \\"It's a draw\\":\\r\\n        //move.player=move.player+\\" tie\\"\\r\\n        move.player=\\"tie\\"\\r\\n        console.log(\\"tie\\")\\r\\n        break;\\r\\n      default:\\r\\n        // code block\\r\\n      }\\r\\n    }\\r\\n    console.log(move);\\r\\n    $moveDetails=move; //triggers the makemove function\\r\\n    \\r\\n  }\\r\\n\\r\\n  function calculateWinner(squares) {\\r\\n    const winningCombo = [\\r\\n      [0, 1, 2],\\r\\n      [3, 4, 5],\\r\\n      [6, 7, 8],\\r\\n      [0, 3, 6],\\r\\n      [1, 4, 7],\\r\\n      [2, 5, 8],\\r\\n      [0, 4, 8],\\r\\n      [2, 4, 6]\\r\\n    ];\\r\\n    for (let i = 0; i < winningCombo.length; i++) {\\r\\n      const [a, b, c] = winningCombo[i];\\r\\n      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]){\\r\\n        //winner =(iAmx && squares[a]==\\"X\\")?\\"you\\":\\"opponent\\"\\r\\n        //console.log(\`Winner: \${squares[a]}\`)\\r\\n        return \`Winner: \${squares[a]}\`;\\r\\n      }\\r\\n    }\\r\\n\\r\\n    const isDraw = squares.every(square => square !== null);\\r\\n    //winner=isDraw?\\"tie\\":\\"none\\";\\r\\n    return isDraw ? \\"It's a draw\\" : null;\\r\\n  }\\r\\n\\r\\n  \\r\\n  $:if((iAmX && myturn==true)||(!iAmX && myturn==false)){\\r\\n    xIsNext=true\\r\\n  }else{\\r\\n    xIsNext=false\\r\\n  }\\r\\n\\r\\n  // $:if(winnerMsg){\\r\\n  //   switch(winnerMsg) {\\r\\n  //   case \\"Winner: X\\":\\r\\n  //     console.log(iAmX)\\r\\n  //     break;\\r\\n  //   case \\"Winner: O\\":\\r\\n  //     console.log(iAmX)\\r\\n  //     break;\\r\\n  //   case \\"It's a draw\\":\\r\\n  //     console.log(\\"draw\\")\\r\\n  //     break;\\r\\n  //   default:\\r\\n  //     // code block\\r\\n  //   }\\r\\n  // }\\r\\n\\r\\n  afterUpdate(async() =>{\\r\\n    winnerMsg=calculateWinner(squares)\\r\\n  });\\r\\n\\r\\n  onDestroy(async() =>{ \\r\\n    $fenIO='';\\r\\n    $moveDetails='';\\r\\n  });\\r\\n\\r\\n\\r\\n</script>\\r\\n\\r\\n<style>\\r\\n  h3 {\\r\\n    color: red;\\r\\n  }\\r\\n\\r\\n  .board {\\r\\n    display: flex;\\r\\n    flex-wrap: wrap;\\r\\n    width: 300px;\\r\\n  }\\r\\n</style>\\r\\n\\r\\n{#if winnerMsg}\\r\\n  <h3>{winnerMsg}</h3>\\r\\n{:else}\\r\\n  <h3>{status}</h3>\\r\\n{/if}\\r\\n<h3>iAmX {iAmX}</h3>\\r\\n<h3>winner {winner}</h3>\\r\\n<h3>my turn{myturn}</h3>\\r\\n<h3>xIsNext {xIsNext}</h3>\\r\\n\\r\\n<div class=\\"board\\">\\r\\n  {#each squares as square, i}\\r\\n    <Square value={square} handleClick={() => handleClick(i)} />\\r\\n  {/each}\\r\\n</div>\\r\\n"],"names":[],"mappings":"AAoHE,EAAE,cAAC,CAAC,AACF,KAAK,CAAE,GAAG,AACZ,CAAC,AAED,MAAM,cAAC,CAAC,AACN,OAAO,CAAE,IAAI,CACb,SAAS,CAAE,IAAI,CACf,KAAK,CAAE,KAAK,AACd,CAAC"}`
+  map: `{"version":3,"file":"Board.svelte","sources":["Board.svelte"],"sourcesContent":["<script>\\r\\n  import Square from \\"./Square.svelte\\";\\r\\n  import {moveDetails,fen as fenIO} from '../../stores/store.js';\\r\\n  import {onMount,onDestroy,beforeUpdate,afterUpdate} from 'svelte';\\r\\n\\r\\n  export let iAmX=true;\\r\\n  export let myturn;\\r\\n  export let squares;\\r\\n\\r\\n  let winnerMsg = null;\\r\\n  let winner=\\"none\\";\\r\\n  let xIsNext ;\\r\\n  $: status = \\"Next Player: \\" + (xIsNext ? \\"X\\" : \\"0\\");\\r\\n\\r\\n\\r\\n  function handleClick(i) {\\r\\n    if(!myturn || winnerMsg){\\r\\n      return;\\r\\n    }\\r\\n    if (!squares[i]) {\\r\\n      squares[i] = xIsNext ? \\"X\\" : \\"0\\";\\r\\n      xIsNext = !xIsNext;\\r\\n      winnerMsg = calculateWinner(squares);\\r\\n      console.log({msg:\\"everything works fine\\",winnerMsg})\\r\\n    }\\r\\n    $fenIO=JSON.stringify(squares);\\r\\n    const move={\\r\\n      player: xIsNext ? \\"X\\" : \\"0\\",\\r\\n      from: \\"\\",\\r\\n      to: \`\${i}\`,\\r\\n    }\\r\\n    if(winnerMsg){\\r\\n      switch(winnerMsg) {\\r\\n      case \\"Winner: X\\":\\r\\n        move.player=\\"win\\"\\r\\n        break;\\r\\n      case \\"Winner: 0\\":\\r\\n        //move.player=move.player+\\" win\\"\\r\\n        move.player=\\"win\\"\\r\\n        console.log(iAmX)\\r\\n        break;\\r\\n      case \\"It's a draw\\":\\r\\n        //move.player=move.player+\\" tie\\"\\r\\n        move.player=\\"tie\\"\\r\\n        console.log(\\"tie\\")\\r\\n        break;\\r\\n      default:\\r\\n        // code block\\r\\n      }\\r\\n    }\\r\\n    console.log(move);\\r\\n    $moveDetails=move; //triggers the makemove function\\r\\n    \\r\\n  }\\r\\n\\r\\n  function calculateWinner(squares) {\\r\\n    const winningCombo = [\\r\\n      [0, 1, 2],\\r\\n      [3, 4, 5],\\r\\n      [6, 7, 8],\\r\\n      [0, 3, 6],\\r\\n      [1, 4, 7],\\r\\n      [2, 5, 8],\\r\\n      [0, 4, 8],\\r\\n      [2, 4, 6]\\r\\n    ];\\r\\n    for (let i = 0; i < winningCombo.length; i++) {\\r\\n      const [a, b, c] = winningCombo[i];\\r\\n      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]){\\r\\n        //winner =(iAmx && squares[a]==\\"X\\")?\\"you\\":\\"opponent\\"\\r\\n        //console.log(\`Winner: \${squares[a]}\`)\\r\\n        return \`Winner: \${squares[a]}\`;\\r\\n      }\\r\\n    }\\r\\n\\r\\n    const isDraw = squares.every(square => square !== null);\\r\\n    //winner=isDraw?\\"tie\\":\\"none\\";\\r\\n    return isDraw ? \\"It's a draw\\" : null;\\r\\n  }\\r\\n\\r\\n  \\r\\n  $:if((iAmX && myturn==true)||(!iAmX && myturn==false)){\\r\\n    xIsNext=true\\r\\n  }else{\\r\\n    xIsNext=false\\r\\n  }\\r\\n\\r\\n  // $:if(winnerMsg){\\r\\n  //   switch(winnerMsg) {\\r\\n  //   case \\"Winner: X\\":\\r\\n  //     console.log(iAmX)\\r\\n  //     break;\\r\\n  //   case \\"Winner: O\\":\\r\\n  //     console.log(iAmX)\\r\\n  //     break;\\r\\n  //   case \\"It's a draw\\":\\r\\n  //     console.log(\\"draw\\")\\r\\n  //     break;\\r\\n  //   default:\\r\\n  //     // code block\\r\\n  //   }\\r\\n  // }\\r\\n\\r\\n  afterUpdate(async() =>{\\r\\n    winnerMsg=calculateWinner(squares)\\r\\n  });\\r\\n\\r\\n  onDestroy(async() =>{ \\r\\n    $fenIO='';\\r\\n    $moveDetails='';\\r\\n  });\\r\\n\\r\\n\\r\\n</script>\\r\\n\\r\\n<style>\\r\\n  h3 {\\r\\n    color: red;\\r\\n  }\\r\\n\\r\\n  .board {\\r\\n    display: flex;\\r\\n    flex-wrap: wrap;\\r\\n    width: 300px;\\r\\n  }\\r\\n</style>\\r\\n\\r\\n{#if winnerMsg}\\r\\n  <h3>{winnerMsg}</h3>\\r\\n{:else}\\r\\n  <h3>{status}</h3>\\r\\n{/if}\\r\\n<!-- <h3>iAmX {iAmX}</h3>\\r\\n<h3>winner {winner}</h3>\\r\\n<h3>my turn{myturn}</h3>\\r\\n<h3>xIsNext {xIsNext}</h3> -->\\r\\n\\r\\n<div class=\\"board\\">\\r\\n  {#each squares as square, i}\\r\\n    <Square value={square} handleClick={() => handleClick(i)} />\\r\\n  {/each}\\r\\n</div>\\r\\n"],"names":[],"mappings":"AAoHE,EAAE,cAAC,CAAC,AACF,KAAK,CAAE,GAAG,AACZ,CAAC,AAED,MAAM,cAAC,CAAC,AACN,OAAO,CAAE,IAAI,CACb,SAAS,CAAE,IAAI,CACf,KAAK,CAAE,KAAK,AACd,CAAC"}`
 };
-let winner = "none";
 function calculateWinner(squares) {
   const winningCombo = [
     [0, 1, 2],
@@ -5583,7 +5588,7 @@ const Board = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let winnerMsg = null;
   let xIsNext;
   function handleClick(i) {
-    if (!myturn) {
+    if (!myturn || winnerMsg) {
       return;
     }
     if (!squares[i]) {
@@ -5641,10 +5646,7 @@ const Board = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   $$unsubscribe_fenIO();
   $$unsubscribe_moveDetails();
   return `${winnerMsg ? `<h3 class="${"svelte-dt6evk"}">${escape(winnerMsg)}</h3>` : `<h3 class="${"svelte-dt6evk"}">${escape(status)}</h3>`}
-<h3 class="${"svelte-dt6evk"}">iAmX ${escape(iAmX)}</h3>
-<h3 class="${"svelte-dt6evk"}">winner ${escape(winner)}</h3>
-<h3 class="${"svelte-dt6evk"}">my turn${escape(myturn)}</h3>
-<h3 class="${"svelte-dt6evk"}">xIsNext ${escape(xIsNext)}</h3>
+
 
 <div class="${"board svelte-dt6evk"}">${each(squares, (square, i) => `${validate_component(Square, "Square").$$render($$result, {
     value: square,
@@ -5668,9 +5670,7 @@ const Ttt_board = create_ssr_component(($$result, $$props, $$bindings, slots) =>
     $$bindings.fen(fen2);
   if ($$props.myturn === void 0 && $$bindings.myturn && myturn !== void 0)
     $$bindings.myturn(myturn);
-  return `<p>${escape(myturn)}</p>
-<p>${escape(fen2)}</p>
-${validate_component(Board, "Board").$$render($$result, {
+  return `${validate_component(Board, "Board").$$render($$result, {
     iAmX: playingFirst,
     myturn,
     squares: fenParsed

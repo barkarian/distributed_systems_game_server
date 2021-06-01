@@ -16,7 +16,7 @@ router.get("/", authorization, async (req, res) => {
     //console.log(...req.verifiedInfos);
     //1.Get all running Matches for this user
     const dbRes = await pool.query(
-      `select ga.match_id,ga.game_id,us1.user_email as player1_email,us2.user_email as player2_email,
+      `select ga.match_id,ga.game_id,ga.game_type,us1.user_email as player1_email,us2.user_email as player2_email,
         win.user_email as winner_email , ga.in_tournament ,tga.tournament_id,tourn.tournament_name,
         tga.phases,tga.phase,tga.phase_id,tga.endgame
         from "games" ga

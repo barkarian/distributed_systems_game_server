@@ -39,6 +39,14 @@
 </label>
 <ul>
     {#each matches as match (match.game_id)}
-    <li>{match.player1_email} vs {match.player2_email} ={match.winner_email==null?"TIE":match.winner_email} </li>  
+    <li>
+        {#if match.tournament_name}
+            <b>{match.tournament_name}/</b>
+        {/if}
+        <b>{match.game_type}-></b> 
+        {#if match.tournament_name}
+            <b>phase:{match.phase} phases:{match.phases}/</b>
+        {/if}
+        <p>{match.player1_email} vs {match.player2_email} ={match.winner_email==null?"TIE":match.winner_email}</p> </li>  
     {/each}
 </ul>

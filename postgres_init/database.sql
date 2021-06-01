@@ -78,7 +78,7 @@ CREATE TABLE waiting_for_matches(
 --             VALUES ('a string id','324d9a15-4d93-4456-837d-e5e227cc413f','f99fb395-0c07-4db2-8e9e-f42f00b30afc','chess','0','fc5d8faa-33a8-41bd-b262-06b97c621458');
 
 --INSERT INTO tournaments(match_id,total_players) VALUES ('awesome tournament name',15);
--- UPDATE users SET user_role_admin='1' WHERE user_email='thodorisbarkas@gmail.com';
+-- UPDATE users SET user_role_admin='1' WHERE user_email='just-admin@gmail.com';
 
 
 -- --TESTING PURPOSES

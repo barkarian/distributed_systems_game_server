@@ -19,7 +19,7 @@ const searchForRunningGames = async ()=>{
             }
             localStorage.setItem("token",parseRes.token);
             runningGames=parseRes.allIndividualMatches
-            //console.log(runningGames)
+            console.log(runningGames)
             
         }catch(err){
             console.log(err)
@@ -37,9 +37,18 @@ onMount(async()=>searchForRunningGames())
 <h1>Your Running Matches are</h1>
 <ul>
     {#each runningGames as game (game.match_id)}
-        <li current={game.match_id}>id:{game.match_id} player1:{game.player1_email} VS player2:{game.player2_email} 
-        phases:{game.phases},phase:{game.phase},phase_id:{game.phases},endgame:{game.endgame}</li>
-        <input type=radio bind:group={selectedMatch} value={game.match_id}>
+        <li current={game.match_id}>
+            {#if game.phases}
+                <b>{game.tournament_name} /phases:{game.phases},phase:{game.phase},phase_id:{game.phases},endgame:{game.endgame}</b>
+            {:else}
+                <b>Practice play</b>
+            {/if}
+            <p>
+               <b>{game.game_type}-></b>
+                player1:{game.player1_email} VS player2:{game.player2_email} 
+                <input type=radio bind:group={selectedMatch} value={game.match_id}> 
+            </p>   
+    </li>
     {/each}
 </ul>
 <p>{selectedMatch}</p>
