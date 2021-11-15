@@ -1,12 +1,14 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const initializeRootUser = require("./configDbAfterRestart");
+require("dotenv").config();
 
 //middleware
 
 app.use(express.json());
 app.use(cors());
-//HELLO BRO new comment here
+initializeRootUser();
 //goodmorning
 
 //ROUTES

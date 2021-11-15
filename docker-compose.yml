@@ -64,9 +64,9 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: authdb
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
       # copy the sql script to create tables
-      - ./postgres_init/database.sql:/docker-entrypoint-initdb.d/create-tables.sql
+      - ./postgres_init/docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+      - postgres-db:/var/lib/postgresql/data
     ports:
       - "5432:5432"
 
@@ -81,3 +81,4 @@ services:
 volumes:
   mongodb:
   mongodb_config:
+  postgres-db:
